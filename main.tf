@@ -21,7 +21,7 @@ resource "azurerm_network_interface" "main" {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.example.ip_address
+    public_ip_address_id          = azurerm_public_ip.example.ip_address
   }
 }
 
@@ -66,19 +66,19 @@ resource "azurerm_virtual_machine" "main" {
     source      = "./index.html"
     destination = "~/index.html"
     connection {
-      type = "ssh"
-      user = "testadmin"
+      type     = "ssh"
+      user     = "testadmin"
       password = "Password1234!"
-      host = azurerm_public_ip.example.ip_address
+      host     = azurerm_public_ip.example.ip_address
     }
   }
 
   provisioner "remote-exec" {
     connection {
-      type = "ssh"
-      user = "testadmin"
+      type     = "ssh"
+      user     = "testadmin"
       password = "Password1234!"
-      host = azurerm_public_ip.example.ip_address
+      host     = azurerm_public_ip.example.ip_address
     }
 
     inline = [
